@@ -32,7 +32,7 @@ export default function BlogAdminPage() {
   useEffect(() => { fetchPosts() }, [fetchPosts])
 
   const handlePublished = (newPost: Record<string, unknown>) => {
-    setPosts(prev => [newPost as Post, ...prev])
+    setPosts(prev => [newPost as unknown as Post, ...prev])
   }
 
   const handleDelete = async (id: string) => {
