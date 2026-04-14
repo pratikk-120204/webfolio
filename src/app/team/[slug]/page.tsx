@@ -7,36 +7,10 @@ import { ArrowLeft, Mail, X as XIcon, Code2, Link2, ExternalLink } from 'lucide-
 import Link from 'next/link'
 import Image from 'next/image'
 
-// Hardcoded fallback for when Supabase table is not set up
-const FALLBACK: Record<string, {
-  name: string; role: string; bio: string; long_bio: string;
-  specialties: string[]; image_url: string;
-  social_twitter: string; social_linkedin: string; social_github: string; email: string;
-}> = {
-  'pratik': {
-    name: 'Pratik Kadole',
-    role: 'CEO / Founder',
-    bio: 'Founder of Webfolio Solutions, Pratik is a visionary engineer specializing in high-performance digital architecture. With a deep passion for minimalist aesthetics and systemic elegance, he leads the agency with a focus on building world-class products.',
-    long_bio: 'With years of experience in full-stack development and creative direction, Pratik has successfully delivered numerous state-of-the-art web applications. His philosophy revolves around "The Engineering Standard" — where design and performance are inseparable. As the CEO, he oversees the technical strategy and creative output of every project at Webfolio Solutions.',
-    specialties: ['Engineering Strategy', 'Full-Stack Architecture', 'Creative Direction'],
-    image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2574&auto=format&fit=crop',
-    social_twitter: '', social_linkedin: '', social_github: '', email: '',
-  },
-  'lead-dev': {
-    name: 'Future Partner',
-    role: 'Lead Developer',
-    bio: 'The backbone of our technical implementation, focusing on scalability and ultra-performance.',
-    long_bio: 'Our Lead Developer role is reserved for the best of the best. We are building a team of specialists who thrive in a collaborative environment where every line of code matters.',
-    specialties: ['Performance Optimization', 'Distributed Systems', 'Frontend Architecture'],
-    image_url: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2574&auto=format&fit=crop',
-    social_twitter: '', social_linkedin: '', social_github: '', email: '',
-  },
-}
-
 export default function TeamMemberPage() {
   const params = useParams()
   const slug = params.slug as string
-  const [member, setMember] = useState(FALLBACK[slug] ?? null)
+  const [member, setMember] = useState<any>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

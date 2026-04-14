@@ -1,14 +1,18 @@
 import type { Metadata } from 'next'
-
-const TEAM_MEMBERS: Record<string, { name: string; role: string }> = {
-  'pratik': { name: 'Pratik Kadole', role: 'CEO / Founder' },
-  'lead-dev': { name: 'Future Partner', role: 'Lead Developer' },
-}
+import { createClient } from '@/utils/supabase/server'
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const member = TEAM_MEMBERS[slug]
+  
+  const supabase = await createClient()
+  const { data: member } = await supabase
+    .from('team')
+    .select('name, role')
+    .eq('id', slug)
+    .single()
+
   if (!member) return { title: 'Team Member Not Found' }
+  
   return {
     title: `${member.name} — ${member.role}`,
     description: `Meet ${member.name}, ${member.role} at Webfolio Solutions. Learn about their background, specialties and how to connect.`,
