@@ -7,10 +7,24 @@ import { ArrowLeft, Mail, X as XIcon, Code2, Link2, ExternalLink } from 'lucide-
 import Link from 'next/link'
 import Image from 'next/image'
 
+interface MemberData {
+  id: string
+  name: string
+  role: string
+  bio: string
+  long_bio: string
+  specialties: string[]
+  image_url: string
+  social_twitter: string
+  social_linkedin: string
+  social_github: string
+  email: string
+}
+
 export default function TeamMemberPage() {
   const params = useParams()
   const slug = params.slug as string
-  const [member, setMember] = useState<any>(null)
+  const [member, setMember] = useState<MemberData | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
