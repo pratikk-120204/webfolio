@@ -8,7 +8,7 @@ export default async function TeamAlbum() {
   const { data: team } = await supabase
     .from('team_members')
     .select('id, name, role, summary, image_url')
-    .order('created_at', { ascending: true })
+    .order('id', { ascending: true })
 
   return <TeamAlbumClient team={team ?? []} />
 }
