@@ -68,7 +68,7 @@ export default function TeamMemberPage() {
               animate={{ opacity: 1, scale: 1 }}
               className="relative aspect-[1/1.2] rounded-[2.5rem] overflow-hidden border border-black/10 shadow-2xl"
             >
-              <Image src={member.image_url} alt={member.name} fill className="object-cover grayscale" />
+              <Image src={member.image_url} alt={member.name} fill className="object-cover" />
             </motion.div>
 
             <div className="flex gap-3 flex-wrap">
