@@ -6,7 +6,7 @@ export default async function TeamAlbum() {
   
   // Exclusively load from the 'team' table securely via server component
   const { data: team } = await supabase
-    .from('team')
+    .from('team_members')
     .select('id, name, role, summary, image_url')
     .order('created_at', { ascending: true })
 
